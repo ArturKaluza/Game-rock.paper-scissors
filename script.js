@@ -98,8 +98,10 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }
-
+    setGamePoints();
 }
+
+
 
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
@@ -113,4 +115,18 @@ function playerPick(playerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+    checkWinner();
+}
+
+function checkWinner() {
+    if (player.score > 2) {
+        alert(player.name + ' is winner!!!');
+    } else if (computer.score > 2) {
+        alert('Computer is winner!!!');
+    }
+    
+    if ((player.score > 2) || (computer.score > 2)) {
+        gameState = 'ended';
+        setGameElements();
+    }
 }
